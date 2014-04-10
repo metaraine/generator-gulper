@@ -1,3 +1,5 @@
+Forked by Raine Lourie. See HISTORY.md
+
 # Web app generator with GulpJS
 
 [Yeoman](http://yeoman.io) generator to scaffold out a front-end web app using the [GulpJS](http://gulpjs.com) task-runner.
