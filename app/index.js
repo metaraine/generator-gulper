@@ -20,7 +20,7 @@ var GulperGenerator = yeoman.generators.Base.extend({
 		var currVersion = this.pkg.version;
 
 		console.log(this.yeoman);
-		console.log(chalk.yellow('Gulper already comes with SASS and a Gulpfile.js'));
+		console.log(chalk.yellow('Gulper already comes with SASS and a gulpfile.coffee'));
 
 		var prompts = [{
 			type: 'checkbox',
@@ -111,7 +111,7 @@ var GulperGenerator = yeoman.generators.Base.extend({
 
 	this.directory('./gulp/app','app');
 
-	this.copy('./gulp/gulpfile.js','gulpfile.js');
+	this.copy('./gulp/gulpfile.coffee','gulpfile.coffee');
 	this.copy('_package.json', 'package.json');
 	// this.copy('_bower.json', 'bower.json');
 },

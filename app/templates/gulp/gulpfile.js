@@ -1,50 +1,50 @@
-var gulp 				= require('gulp'),
-	gutil 				= require('gulp-util');
+var gulp                = require('gulp'),
+	gutil               = require('gulp-util');
 
-var http 				= require('http'),
-	runSequence			= require('run-sequence'),
-	sass 				= require('gulp-sass'),
-	autoprefixer 		= require('gulp-autoprefixer'),
-	minifycss 			= require('gulp-minify-css'),
-	jshint 				= require('gulp-jshint'),
-	rename 				= require('gulp-rename'),
-	uglify				= require('gulp-uglify'),
-	clean 				= require('gulp-clean'),
-	concat 				= require('gulp-concat'),
-	imagemin 			= require('gulp-imagemin'),
-	cache 				= require('gulp-cache'),
-	open				= require('gulp-open'),
-	livereload 			= require('gulp-livereload'),
-	embedlr				= require('gulp-embedlr'),
-	ecstatic			= require('ecstatic'),
-	lr 					= require('tiny-lr'),
-	server 				= lr();
+var http                = require('http'),
+	runSequence         = require('run-sequence'),
+	sass                = require('gulp-sass'),
+	autoprefixer        = require('gulp-autoprefixer'),
+	minifycss           = require('gulp-minify-css'),
+	jshint              = require('gulp-jshint'),
+	rename              = require('gulp-rename'),
+	uglify              = require('gulp-uglify'),
+	clean               = require('gulp-clean'),
+	concat              = require('gulp-concat'),
+	imagemin            = require('gulp-imagemin'),
+	cache               = require('gulp-cache'),
+	open                = require('gulp-open'),
+	livereload          = require('gulp-livereload'),
+	embedlr             = require('gulp-embedlr'),
+	ecstatic            = require('ecstatic'),
+	lr                  = require('tiny-lr'),
+	server              = lr();
 
 var config = {
-	http_port: 			"1337",
-	livereload_port: 	"35729",
-	startpage:			"dist/index.html",
+	http_port:          "1337",
+	livereload_port:    "35729",
+	startpage:          "dist/index.html",
 
 	// html
-	src_html: 			"app/**/*.html",
+	src_html:           "app/**/*.html",
 
 	// styles
-	src_sass: 			"app/assets/styles/**/*.scss",
-	dest_css: 			"dist/assets/styles",
+	src_sass:           "app/assets/styles/**/*.scss",
+	dest_css:           "dist/assets/styles",
 
 	// scripts
-	src_js: 			"app/assets/scripts/*.js",
-	dest_js: 			"dist/assets/scripts",
-	js_concat_target: 	"main.js",
+	src_js:             "app/assets/scripts/*.js",
+	dest_js:            "dist/assets/scripts",
+	js_concat_target:   "main.js",
 
 	// plugins
-	src_plugins: 		"app/assets/scripts/plugins/*.js",
-	dest_plugins: 		"dist/assets/scripts",
-	plugins_concat: 	"plugins.js",
+	src_plugins:        "app/assets/scripts/plugins/*.js",
+	dest_plugins:       "dist/assets/scripts",
+	plugins_concat:     "plugins.js",
 
 	// images
-	src_img: 			"app/assets/images/**/*.*",
-	dest_img: 			"dist/assets/images",
+	src_img:            "app/assets/images/**/*.*",
+	dest_img:           "dist/assets/images",
 	
 };
 
