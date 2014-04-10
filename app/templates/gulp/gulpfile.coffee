@@ -49,41 +49,71 @@ config =
 
 # sass task
 gulp.task 'styles', ->
-	gulp.src(config.src_sass).pipe(sass(style: 'expanded')).pipe(autoprefixer('last 2 version', 'safari 5', 'ie 7', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4')).pipe(gulp.dest(config.dest_css)).pipe(rename(suffix: '.min')).pipe(minifycss()).pipe(gulp.dest(config.dest_css)).pipe livereload(server)
+	gulp.src(config.src_sass)
+		.pipe(sass(style: 'expanded'))
+		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 7', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+		.pipe(gulp.dest(config.dest_css))
+		.pipe(rename(suffix: '.min'))
+		.pipe(minifycss())
+		.pipe(gulp.dest(config.dest_css))
+		.pipe livereload(server)
 
 
 # concat & minify js
 gulp.task 'scripts', ->
 	# ".jshintrc" 
-	gulp.src(config.src_js).pipe(jshint()).pipe(jshint.reporter('default')).pipe(concat(config.js_concat_target)).pipe(gulp.dest(config.dest_js)).pipe(rename(suffix: '.min')).pipe(uglify()).pipe(gulp.dest(config.dest_js)).pipe livereload(server)
+	gulp.src(config.src_js)
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+		.pipe(concat(config.js_concat_target))
+		.pipe(gulp.dest(config.dest_js))
+		.pipe(rename(suffix: '.min'))
+		.pipe(uglify())
+		.pipe(gulp.dest(config.dest_js))
+		.pipe livereload(server)
 
 
 # concat & minify plugins
 gulp.task 'plugins', ->
 	# ".jshintrc" 
-	gulp.src(config.src_plugins).pipe(jshint()).pipe(jshint.reporter('default')).pipe(concat(config.plugins_concat)).pipe(gulp.dest(config.dest_plugins)).pipe(rename(suffix: '.min')).pipe(uglify()).pipe(gulp.dest(config.dest_js)).pipe livereload(server)
+	gulp.src(config.src_plugins)
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+		.pipe(concat(config.plugins_concat))
+		.pipe(gulp.dest(config.dest_plugins))
+		.pipe(rename(suffix: '.min'))
+		.pipe(uglify())
+		.pipe(gulp.dest(config.dest_js))
+		.pipe livereload(server)
 
 
 # minify images
 gulp.task 'images', ->
-	gulp.src(config.src_img).pipe(imagemin()).pipe gulp.dest(config.dest_img)
+	gulp.src(config.src_img)
+		.pipe(imagemin())
+		.pipe gulp.dest(config.dest_img)
 
 
 # watch html & embed lr
 gulp.task 'html', ->
-	gulp.src(config.src_html).pipe(embedlr()).pipe(gulp.dest('dist/')).pipe livereload(server)
+	gulp.src(config.src_html)
+		.pipe(embedlr())
+		.pipe(gulp.dest('dist/'))
+		.pipe livereload(server)
 
 
 # clean '.dist/'
 gulp.task 'clean', ->
 	gulp.src(['./dist/**/*.*'],
 		read: true
-	).pipe clean()
+	)
+	.pipe clean()
 
 
 # site launcher
 gulp.task 'open', ->
-	gulp.src(config.startpage).pipe open(config.startpage,
+	gulp.src(config.startpage)
+		.pipe open(config.startpage,
 		url: 'http://localhost:' + config.http_port
 	)
 
