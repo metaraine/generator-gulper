@@ -1,1 +1,2 @@
 - Converted gulpfile.js to gulpfile.coffee
+- _package.json: Replace ~x.y.z with ~x
