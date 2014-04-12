@@ -129,6 +129,7 @@ gulp.task 'default', (callback) ->
 	], 'open', callback
 	server.listen config.livereload_port
 	http.createServer(ecstatic(root: 'dist/')).listen config.http_port
+	
 	gulp.watch(config.src_sass, ['styles'])._watcher.on 'all', livereload
 	gulp.watch(config.src_plugins, ['plugins'])._watcher.on 'all', livereload
 	gulp.watch(config.src_js, ['scripts'])._watcher.on 'all', livereload

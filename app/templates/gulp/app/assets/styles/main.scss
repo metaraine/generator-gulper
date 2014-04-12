@@ -1,7 +1,16 @@
 <% if (includeBourbon) { %>@import "bourbon/bourbon";><% } %>
 <% if (includeNeat) { %>@import "neat/neat";><% } %>
 
-@import "reset";
-@import "utils";
-@import "layout";
-@import "startpage"; // remove this!
+
+// UTIL
+
+* {
+	box-sixing: border-box;
+}
+
+// DEFAULTS
+
+body {
+	font-family: "Helvetica", "Segoe UI", Arial, Sans-Serif;
+	font-weight: 300;
+}

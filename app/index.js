@@ -22,32 +22,44 @@ var GulperGenerator = yeoman.generators.Base.extend({
 		console.log(this.yeoman);
 		console.log(chalk.yellow('Gulper already comes with SASS and a gulpfile.coffee'));
 
-		var prompts = [{
-			type: 'checkbox',
-			name: 'features',
-			message: 'What more would you like?',
-			choices: [{
-				name: 'Modernizr',
-				value: 'includeModernizr',
-				checked: false
-			},{
-				name: 'jQuery (Google CDN)',
-				value: 'includejQuery',
-				checked: false
-			},{
-				name: 'Bourbon Sass Mixins',
-				value: 'includeBourbon',
-				checked: false
-			},{
-				name: 'Neat Grids Sass Mixins',
-				value: 'includeNeat',
-				checked: false
-			}]
-		},{
-			type: 'input',
-			name: 'projectName',
-			message: 'What would you like to call your project?'
-		}];
+		var prompts = [
+			{
+				type: 'input',
+				name: 'projectName',
+				message: 'What would you like to call your project?'
+			},
+			{
+				type: 'checkbox',
+				name: 'features',
+				message: 'What more would you like?',
+				choices: [{
+					name: 'Normalize',
+					value: 'includeNormalize',
+					checked: true
+				},{
+					name: 'jQuery v2.1.0',
+					value: 'includejQuery',
+					checked: true
+				},{
+					name: 'Modernizr',
+					value: 'includeModernizr',
+					checked: false
+				},{
+					name: 'Bourbon Sass Mixins',
+					value: 'includeBourbon',
+					checked: false
+				},{
+					name: 'Neat Grids Sass Mixins',
+					value: 'includeNeat',
+					checked: false
+				}]
+			},
+			{
+				type: 'input',
+				name: 'googleFont',
+				message: 'Include a Google Font like "Lato:300,400"?'
+			}
+		];
 
 		this.prompt(prompts, function (answers) {
 
@@ -76,7 +88,7 @@ var GulperGenerator = yeoman.generators.Base.extend({
 	this.mkdir('app/assets/scripts');
 	this.mkdir('app/assets/images');
 
-	if (includeBourbon) {		
+	if (this.includeBourbon) {		
 		var terminal = require('child_process').spawn('bash');
 		terminal.stdout.on('data', function (data) {
 		    console.log('stdout: ' + data);
@@ -92,7 +104,7 @@ var GulperGenerator = yeoman.generators.Base.extend({
 		}, 1000);
 	};
 
-	if (includeNeat) {		
+	if (this.includeNeat) {		
 		var terminal = require('child_process').spawn('bash');
 		terminal.stdout.on('data', function (data) {
 		    console.log('stdout: ' + data);
