@@ -5,6 +5,7 @@
 - Added Google Font prompt
 - Added css defaults, helper functions, components, and bootstrap overrides
 - Added bootstrap prompt
+- Attach answer.features directly to app instance instead of moving includeBootstrap, includeNormalize etc over manually
 
 ## Todo
 - Dynamic CDN urls

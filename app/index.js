@@ -1,9 +1,10 @@
 'use strict';
-var util 	= require('util');
-var path 	= require('path');
-var spawn 	= require('child_process').spawn;
-var yeoman 	= require('yeoman-generator');
-var chalk 	= require('chalk');
+var util 	=   require('util'),
+		path 	=   require('path'),
+		spawn 	= require('child_process').spawn,
+		yeoman 	= require('yeoman-generator'),
+		chalk 	= require('chalk'),
+		_ 			= require('lodash');
 
 var GulperGenerator = yeoman.generators.Base.extend({
 	init: function () {
@@ -32,27 +33,27 @@ var GulperGenerator = yeoman.generators.Base.extend({
 			message: 'What more would you like?',
 			choices: [{
 				name: 'Bootstrap',
-				value: 'includeBootstrap',
+				value: 'bootstrap',
 				checked: false
 			},{
 				name: 'Normalize',
-				value: 'includeNormalize',
+				value: 'normalize',
 				checked: false
 			},{
 				name: 'Modernizr',
-				value: 'includeModernizr',
+				value: 'modernizr',
 				checked: false
 			},{
-				name: 'jQuery (Google CDN)',
-				value: 'includejQuery',
+				name: 'jQuery',
+				value: 'jQuery',
 				checked: false
 			},{
 				name: 'Bourbon Sass Mixins',
-				value: 'includeBourbon',
+				value: 'bourbon',
 				checked: false
 			},{
 				name: 'Neat Grids Sass Mixins',
-				value: 'includeNeat',
+				value: 'neat',
 				checked: false
 			}]
 		},{
@@ -63,18 +64,9 @@ var GulperGenerator = yeoman.generators.Base.extend({
 
 		this.prompt(prompts, function (answers) {
 
-			var features = answers.features;
+			// convert the features array into an object
+			this.features = _.zipObject(answers.features, answers.features.map(_.partial(_.identity, 1)))
 
-			function hasFeature(feat) {
-				return features.indexOf(feat) !== -1;
-			}
-
-			this.includeBootstrap = hasFeature('includeBootstrap');
-			this.includeNormalize = hasFeature('includeNormalize');
-			this.includeModernizr = hasFeature('includeModernizr');
-			this.includejQuery = hasFeature('includejQuery');
-			this.includeBourbon = hasFeature('includeBourbon');
-			this.includeNeat = hasFeature('includeNeat');
 			this.googleFont = answers.googleFont;
 			this.projectName = answers.projectName;
 			this.projectVersion = currVersion;

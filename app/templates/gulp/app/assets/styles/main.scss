@@ -1,5 +1,5 @@
-<% if (includeBourbon) { %>@import "bourbon/bourbon";><% } %>
-<% if (includeNeat) { %>@import "neat/neat";><% } %>
+<% if (bourbon) { %>@import "bourbon/bourbon";><% } %>
+<% if (neat) { %>@import "neat/neat";><% } %>
 
 
 /************************
@@ -74,7 +74,7 @@ section {
 .text-extra-muted::-moz-placeholder { color: #d6d6d6; }
 .text-extra-muted:-ms-input-placeholder { color: #d6d6d6; }
 
-<% if (includeBootstrap) { %>
+<% if (bootstrap) { %>
 /************************
  * BOOTSTRAP OVERRIDES
  ************************/
