@@ -5,6 +5,7 @@ var util 	=   require('util'),
 		yeoman 	= require('yeoman-generator'),
 		chalk 	= require('chalk'),
 		_ 			= require('lodash');
+		// cdnjs 	= require('cdnjs');
 
 var GulperGenerator = yeoman.generators.Base.extend({
 	init: function () {
@@ -17,6 +18,7 @@ var GulperGenerator = yeoman.generators.Base.extend({
 	},
 
 	askFor: function () {
+		var that = this;
 		var done = this.async();
 		var currVersion = this.pkg.version;
 
@@ -45,7 +47,7 @@ var GulperGenerator = yeoman.generators.Base.extend({
 				checked: false
 			},{
 				name: 'jQuery',
-				value: 'jQuery',
+				value: 'jquery',
 				checked: false
 			},{
 				name: 'Bourbon Sass Mixins',
@@ -71,7 +73,22 @@ var GulperGenerator = yeoman.generators.Base.extend({
 			this.projectName = answers.projectName;
 			this.projectVersion = currVersion;
 
-			done();
+			// get cdns for jquery
+			// DISABLED UNTIL CDNJS PERFORMANCE IS FIXED
+			// if(that.features.jquery) {
+			// 	cdnjs.url('jquery', function (err, pkg) {
+			// 		if(err) {
+			// 			// if error, print error and default to hardcoded url
+			// 			console.error(err);
+			// 			that.cdn.jquery = '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js';
+			// 		}
+			// 		else {
+			// 			that.cdn.jquery = pkg.url;
+			// 		}
+			// 		done();
+			// 	});
+			// }
+
 		}.bind(this));
 	},
 
