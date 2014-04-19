@@ -2,15 +2,94 @@
 <% if (includeNeat) { %>@import "neat/neat";><% } %>
 
 
-// UTIL
+/************************
+ * DEFAULTS
+ ************************/
 
 * {
 	box-sixing: border-box;
 }
 
-// DEFAULTS
-
 body {
-	font-family: "Helvetica", "Segoe UI", Arial, Sans-Serif;
+	// string everything off the googleFont after the ':'. e.g. Lato:300,400 -> Lato
+	// I should do this logic in sass rather than this ejs mess
+  font: 24px <% if (googleFont) { %>googleFont.split(':')[0]<% } else { %>Helvetica<% } %>, 'Segoe UI', Arial, sans-serif;
 	font-weight: 300;
+  padding: 50px;
 }
+
+a { }
+a:visited { }
+
+h1 { font-size: 72px; }
+h2 { font-size: 55px; }
+h3 { font-size: 32px; }
+h4 { font-size: 24px; }
+
+p { margin: 0 0 20px; }
+
+section {
+	margin-bottom: 50px;
+}
+
+/************************
+ * COMPONENTS
+ ************************/
+
+.input-stealth {
+	border: 0;
+	box-shadow: none;
+}
+
+.narrower {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.blur {
+	-webkit-filter: blur(20px);
+	-moz-filter: blur(15px);
+	-o-filter: blur(15px);
+	-ms-filter: blur(15px);
+	filter: blur(15px);
+}
+
+.header-cell {
+	text-align: right;
+	vertical-align: top;
+	padding-right: 0.3em;
+	width: 1px;
+}
+
+/************************
+ * HELPER FUNCTIONS
+ ************************/
+
+.left { text-align: left; }
+.right { text-align: right; }
+.text-smaller { font-size: 18px; }
+.text-extra-muted { color: #d6d6d6; }
+.text-extra-muted::-webkit-input-placeholder { color: #d6d6d6; }
+.text-extra-muted:-moz-placeholder { color: #d6d6d6; }
+.text-extra-muted::-moz-placeholder { color: #d6d6d6; }
+.text-extra-muted:-ms-input-placeholder { color: #d6d6d6; }
+
+<% if (includeBootstrap) { %>
+/************************
+ * BOOTSTRAP OVERRIDES
+ ************************/
+
+.form-control {
+	font-size: 18px;
+	padding: 21.6px 14.4px;
+}
+
+.form-control-md {
+	font-size: 24px;
+}
+
+.form-control.right {
+	position: relative;
+	right: -0.8em; /* offset right padding inside text box */
+}
+<% } %>

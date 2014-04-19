@@ -3,3 +3,8 @@
 - Added normalize cdn. 
 - Removed extra scss files so there's just main.scss.
 - Added Google Font prompt
+- Added css defaults, helper functions, components, and bootstrap overrides
+- Added bootstrap prompt
+
+## Todo
+- Dynamic CDN urls

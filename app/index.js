@@ -35,11 +35,14 @@ var GulperGenerator = yeoman.generators.Base.extend({
 				choices: [{
 					name: 'Normalize',
 					value: 'includeNormalize',
-					checked: true
+					checked: false
+				},{
+					name: 'Bootstrap',
+					value: 'includeBootstrap',
 				},{
 					name: 'jQuery v2.1.0',
 					value: 'includejQuery',
-					checked: true
+					checked: false
 				},{
 					name: 'Modernizr',
 					value: 'includeModernizr',
@@ -57,7 +60,7 @@ var GulperGenerator = yeoman.generators.Base.extend({
 			{
 				type: 'input',
 				name: 'googleFont',
-				message: 'Include a Google Font like "Lato:300,400"?'
+				message: 'Include a Google Font? e.g. \'Lato:300,400\')'
 			}
 		];
 
@@ -82,56 +85,56 @@ var GulperGenerator = yeoman.generators.Base.extend({
 
 	app: function () {
 
-	this.mkdir('app');
-	this.mkdir('app/assets');
-	this.mkdir('app/assets/styles');
-	this.mkdir('app/assets/scripts');
-	this.mkdir('app/assets/images');
+		this.mkdir('app');
+		this.mkdir('app/assets');
+		this.mkdir('app/assets/styles');
+		this.mkdir('app/assets/scripts');
+		this.mkdir('app/assets/images');
 
-	if (this.includeBourbon) {		
-		var terminal = require('child_process').spawn('bash');
-		terminal.stdout.on('data', function (data) {
-		    console.log('stdout: ' + data);
-		});
-		terminal.on('exit', function (code) {
-		    console.log('child process exited with code ' + code);
-		});
-		setTimeout(function() {
-		    console.log('Installing Bourbon');
-		    terminal.stdin.write('bourbon install --path ./app/assets/styles');
-		    terminal.stdin.write('uptime\n');
-		    terminal.stdin.end();
-		}, 1000);
-	};
+		if (this.includeBourbon) {		
+			var terminal = require('child_process').spawn('bash');
+			terminal.stdout.on('data', function (data) {
+			    console.log('stdout: ' + data);
+			});
+			terminal.on('exit', function (code) {
+			    console.log('child process exited with code ' + code);
+			});
+			setTimeout(function() {
+			    console.log('Installing Bourbon');
+			    terminal.stdin.write('bourbon install --path ./app/assets/styles');
+			    terminal.stdin.write('uptime\n');
+			    terminal.stdin.end();
+			}, 1000);
+		};
 
-	if (this.includeNeat) {		
-		var terminal = require('child_process').spawn('bash');
-		terminal.stdout.on('data', function (data) {
-		    console.log('stdout: ' + data);
-		});
-		terminal.on('exit', function (code) {
-		    console.log('child process exited with code ' + code);
-		});
-		setTimeout(function() {
-		    console.log('Installing Neat');
-		    terminal.stdin.write('neat install');
-		    terminal.stdin.write('mv ./neat/ ./app/assets/styles/neat');
-		    terminal.stdin.write('uptime\n');
-		    terminal.stdin.end();
-		}, 1000);
-	};
+		if (this.includeNeat) {		
+			var terminal = require('child_process').spawn('bash');
+			terminal.stdout.on('data', function (data) {
+			    console.log('stdout: ' + data);
+			});
+			terminal.on('exit', function (code) {
+			    console.log('child process exited with code ' + code);
+			});
+			setTimeout(function() {
+			    console.log('Installing Neat');
+			    terminal.stdin.write('neat install');
+			    terminal.stdin.write('mv ./neat/ ./app/assets/styles/neat');
+			    terminal.stdin.write('uptime\n');
+			    terminal.stdin.end();
+			}, 1000);
+		};
 
-	this.directory('./gulp/app','app');
+		this.directory('./gulp/app','app');
 
-	this.copy('./gulp/gulpfile.coffee','gulpfile.coffee');
-	this.copy('_package.json', 'package.json');
-	// this.copy('_bower.json', 'bower.json');
-},
+		this.copy('./gulp/gulpfile.coffee','gulpfile.coffee');
+		this.copy('_package.json', 'package.json');
+		// this.copy('_bower.json', 'bower.json');
+	},
 
-projectfiles: function () {
-	this.copy('editorconfig', '.editorconfig');
-	this.copy('jshintrc', '.jshintrc');
-}
+	projectfiles: function () {
+		this.copy('editorconfig', '.editorconfig');
+		this.copy('jshintrc', '.jshintrc');
+	}
 });
 
 module.exports = GulperGenerator;
