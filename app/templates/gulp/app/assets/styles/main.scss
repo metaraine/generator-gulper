@@ -13,7 +13,7 @@
 body {
 	// string everything off the googleFont after the ':'. e.g. Lato:300,400 -> Lato
 	// I should do this logic in sass rather than this ejs mess
-  font: 24px <% if (googleFont) { %>googleFont.split(':')[0]<% } else { %>Helvetica<% } %>, 'Segoe UI', Arial, sans-serif;
+  font: 24px <% if (googleFont) { %><%= googleFont.split(':')[0]%>, <% } %>Helvetica, 'Segoe UI', Arial, sans-serif;
 	font-weight: 300;
   padding: 50px;
 }

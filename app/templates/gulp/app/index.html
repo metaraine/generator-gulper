@@ -8,19 +8,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<title><%= projectName %></title>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-	<% if (includeBootstrap) { %><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"></link><% } %>
-	<% else if (includeNormalize) { %><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css"></link><% } %>
-	<% if (googleFont) { %><link href='//fonts.googleapis.com/css?family=<%= googleFont %>' rel='stylesheet' type='text/css'><% } %>
 	<link rel="stylesheet" href="assets/styles/main.css" />
+	<% if (includeBootstrap) { %><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"></link><% } %>
+	<% if (includeNormalize) { %><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css"></link><% } %>
+	<% if (googleFont) { %><link href='//fonts.googleapis.com/css?family=<%= googleFont %>' rel='stylesheet' type='text/css'><% } %>
+ 	<link rel="stylesheet" href="assets/styles/main.css" />
 	<% if (includeModernizr) { %><script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script><% } %>
 </head>
 <body>
 	
-	<div id="container">
-		<img src="assets/images/gulp.png" width="114" height="257" alt="Gulp" />
-		<p>Gulper v<%= projectVersion %></p>
-		<p><a href="https://github.com/leaky/generator-gulper">Github</a></p>
-	</div>
+	<img src="https://raw2.github.com/gulpjs/artwork/master/gulp-2x.png" width="114" height="257" alt="Gulp" />
 
 	<% if (includejQuery) { %><script src="//code.jquery.com/jquery-2.1.0.min.js"></script><% } %>
 	<% if (includeBootstrap) { %><script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><% } %>

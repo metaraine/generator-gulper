@@ -22,47 +22,44 @@ var GulperGenerator = yeoman.generators.Base.extend({
 		console.log(this.yeoman);
 		console.log(chalk.yellow('Gulper already comes with SASS and a gulpfile.coffee'));
 
-		var prompts = [
-			{
-				type: 'input',
-				name: 'projectName',
-				message: 'What would you like to call your project?'
-			},
-			{
-				type: 'checkbox',
-				name: 'features',
-				message: 'What more would you like?',
-				choices: [{
-					name: 'Normalize',
-					value: 'includeNormalize',
-					checked: false
-				},{
-					name: 'Bootstrap',
-					value: 'includeBootstrap',
-				},{
-					name: 'jQuery v2.1.0',
-					value: 'includejQuery',
-					checked: false
-				},{
-					name: 'Modernizr',
-					value: 'includeModernizr',
-					checked: false
-				},{
-					name: 'Bourbon Sass Mixins',
-					value: 'includeBourbon',
-					checked: false
-				},{
-					name: 'Neat Grids Sass Mixins',
-					value: 'includeNeat',
-					checked: false
-				}]
-			},
-			{
-				type: 'input',
-				name: 'googleFont',
-				message: 'Include a Google Font? e.g. \'Lato:300,400\')'
-			}
-		];
+		var prompts = [{
+			type: 'input',
+			name: 'projectName',
+			message: 'What would you like to call your project?'
+		},{
+			type: 'checkbox',
+			name: 'features',
+			message: 'What more would you like?',
+			choices: [{
+				name: 'Bootstrap',
+				value: 'includeBootstrap',
+				checked: false
+			},{
+				name: 'Normalize',
+				value: 'includeNormalize',
+				checked: false
+			},{
+				name: 'Modernizr',
+				value: 'includeModernizr',
+				checked: false
+			},{
+				name: 'jQuery (Google CDN)',
+				value: 'includejQuery',
+				checked: false
+			},{
+				name: 'Bourbon Sass Mixins',
+				value: 'includeBourbon',
+				checked: false
+			},{
+				name: 'Neat Grids Sass Mixins',
+				value: 'includeNeat',
+				checked: false
+			}]
+		},{
+			type: 'input',
+			name: 'googleFont',
+			message: 'Include a Google Font? e.g. \'Lato:300,400\')'
+		}];
 
 		this.prompt(prompts, function (answers) {
 
@@ -72,10 +69,13 @@ var GulperGenerator = yeoman.generators.Base.extend({
 				return features.indexOf(feat) !== -1;
 			}
 
+			this.includeBootstrap = hasFeature('includeBootstrap');
+			this.includeNormalize = hasFeature('includeNormalize');
 			this.includeModernizr = hasFeature('includeModernizr');
 			this.includejQuery = hasFeature('includejQuery');
 			this.includeBourbon = hasFeature('includeBourbon');
 			this.includeNeat = hasFeature('includeNeat');
+			this.googleFont = answers.googleFont;
 			this.projectName = answers.projectName;
 			this.projectVersion = currVersion;
 
